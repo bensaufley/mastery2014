@@ -1,0 +1,4 @@
+= Mastery
+=== A neat little app to track your activities
+
+Documentation will go here.
