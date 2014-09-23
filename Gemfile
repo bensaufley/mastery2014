@@ -17,15 +17,17 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-group :development do
+group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
-end
-
-group :development, :test do
   gem 'rspec-rails'
+  gem 'capybara'
   gem 'pry-rails'
+  gem 'pry-nav'
   gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'poltergeist'
+  gem 'launchy'
   gem 'fivemat'
 end
 

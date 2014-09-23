@@ -14,6 +14,8 @@
  *= require_self
  */
 
+@import 'shared';
+
 * {
   box-sizing: border-box;
 }
@@ -27,8 +29,14 @@ body {
   min-height: 100%;
 }
 
-body {
+body,
+input,
+select,
+textarea {
   font-family: sans-serif;
+}
+
+body {
   font-size: 62.5%;
 }
 
@@ -44,6 +52,7 @@ main {
 .page-header,
 main,
 .page-footer {
+  line-height: $grid-spacing * 1.6 * 2;
   margin: 0 auto;
   padding: 10px;
 
@@ -54,4 +63,54 @@ main,
 
 main {
   max-width: 1200px;
+}
+
+p,
+ul,
+ol,
+blockquote {
+  margin-bottom: $grid-spacing;
+}
+
+input,
+textarea,
+select {
+  font-size: 1em;
+  line-height: $grid-spacing * 1.6 * 2;
+  height: $grid-spacing * 1.6 * 2;
+  width: 100%;
+}
+
+[data-row] {
+  margin: 0 (-$grid-spacing/2);
+  max-width: 1200px;
+  width: 100%;
+  @include clearfix;
+}
+
+[data-columns] {
+  float: left;
+  padding: 0 $grid-spacing/2 $grid-spacing;
+}
+
+[data-columns~='right'] {
+  float: right;
+}
+
+[data-row~='collapse'] {
+  margin: 0;
+
+  [data-columns] {
+    padding: 0 0 $grid-spacing;
+  }
+}
+
+@for $i from 2 through 12 {
+  @for $j from 1 through ($i - 1) {
+    @if $j == 1 or round($i/$j) != ($i/$j) {
+      [data-columns~='#{$j}/#{$i}'] {
+        width: percentage($j/$i);
+      }
+    }
+  }
 }
