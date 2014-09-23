@@ -30,6 +30,7 @@ GEM
     arel (5.0.1.20140414130214)
     autoprefixer-rails (3.1.0.20140911)
       execjs
+    bcrypt (3.1.7)
     builder (3.2.2)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -39,6 +40,12 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    devise (3.3.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.2.1)
@@ -70,6 +77,7 @@ GEM
     mime-types (2.3)
     minitest (5.4.1)
     multi_json (1.10.1)
+    orm_adapter (0.5.0)
     pg (0.17.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -144,6 +152,8 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -151,6 +161,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   coffee-rails (~> 4.0.0)
+  devise
   factory_girl_rails
   fivemat
   haml-rails
