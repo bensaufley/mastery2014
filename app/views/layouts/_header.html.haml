@@ -1,8 +1,15 @@
-%header.page-header
-  %h1 Mastery
-  %nav
+.contain-to-grid.fixed
+  %nav.top-bar{ role: 'navigation', data: { topbar: true }}
+    %ul.title-area
+      %li.name
+        %h1= link_to 'Mastery', root_path
+      %li.toggle-topbar.menu-icon
+        = link_to '#' do
+          %span
     - if user_signed_in?
       -#
     - else
-      = link_to 'Sign In', new_user_session_path
-      = link_to 'Sign Up', new_user_registration_path
+      %section.top-bar-section
+        %ul.right
+          %li= link_to 'Sign In', new_user_session_path
+          %li= link_to 'Sign Up', new_user_registration_path
