@@ -6,10 +6,38 @@
       %li.toggle-topbar.menu-icon
         = link_to '#' do
           %span
-    - if user_signed_in?
-      -#
-    - else
-      %section.top-bar-section
+    %section.top-bar-section
+      - if user_signed_in?
         %ul.right
-          %li= link_to 'Sign In', new_user_session_path
-          %li= link_to 'Sign Up', new_user_registration_path
+          %li.has-dropdown
+            = link_to '#' do
+              = icon 'cubes fa-fw'
+              Activities
+            %ul.dropdown
+              - Activity::TYPES.sort.each do |type|
+                - current_user.activities.where(type: type).order(:name).each do |activity|
+                  %li
+                    = link_to [current_user, activity] do
+                      = icon "#{activity.type.dasherize.downcase} fa-fw"
+                      = activity.name
+                %li.divider
+              %li
+                = link_to new_user_activity_path(current_user.id) do
+                  = icon 'plus fa-fw'
+                  New Activity
+          %li.divider
+          %li
+            = link_to destroy_user_session_path, method: :delete do
+              = icon('power-off fa-fw')
+              Sign Out
+      - else
+        %ul.right
+          %li
+            = link_to new_user_registration_path do
+              = icon 'pencil fa-fw'
+              Sign Up
+          %li.divider
+          %li
+            = link_to new_user_session_path do
+              = icon 'arrow-circle-right fa-fw'
+              Sign In

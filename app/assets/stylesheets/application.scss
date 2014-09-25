@@ -14,6 +14,8 @@
  */
 
 @import 'shared';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 @import 'foundation-setup';
 
 * {
@@ -36,4 +38,12 @@ body {
 main {
   margin: 0 auto;
   max-width: $row-width;
+}
+
+.fa-counted {
+  @extend .fa-check-circle-o;
+}
+
+.fa-timed {
+  @extend .fa-clock-o;
 }

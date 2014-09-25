@@ -1,0 +1,16 @@
+%h1 Popular Activities
+
+%table
+  %tr
+    %th.text-center Type
+    %th Name
+    %th Description
+    %th.text-right Users
+
+  - @activities.each do |activity|
+    %tr
+      %td.text-center= icon activity.type.dasherize.downcase + ' fa-fw'
+      %td
+        %strong= activity.name
+      %td= activity.description
+      %td.text-right= activity.users.size

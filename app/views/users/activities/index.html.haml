@@ -1,0 +1,16 @@
+%h1 My Activities
+
+%table
+  %tr
+    %th.text-center Type
+    %th Name
+    %th Description
+
+  - @activities.each do |activity|
+    %tr
+      %td.text-center= icon activity.type.dasherize.downcase + ' fa-fw'
+      %td
+        %strong= activity.name
+      %td= activity.description
+
+= link_to 'New Activity', new_user_activity_path(@user)

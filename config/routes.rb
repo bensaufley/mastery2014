@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'home' => 'users#home', as: 'user_home'
+
+  resources :activities, only: [:index, :show]
+
   devise_for :users
+
+  namespace :users, path: 'users/:user_id', as: 'user' do
+    resources :activities
+  end
+
   get 'faq' => 'pages#faq'
 
   root 'pages#home'
